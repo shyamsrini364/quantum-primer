@@ -24,6 +24,7 @@ Introduction references: *Life on the Edge*, chapters 3, 4 and 6; *Health and Li
 ## Vercel deployment
 
 The private source repository is https://github.com/shyamsrini364/quantum-primer.
+Live site: https://quantum-primer.vercel.app.
 The Vercel project is `quantum-primer` under `shyamsrini26-7342s-projects`.
 `app.py` exposes the same FastAPI service used locally. Vercel deployment and
 production domains are accepted through Vercel's server-provided environment variables.
