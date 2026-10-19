@@ -1,0 +1,12 @@
+[
+  {
+    "question": "In Optimize, how does exclusion zone water act like a battery? Explain simply with a practical example and a tip for understanding it.",
+    "expected_status": "answered",
+    "expected_source_ids": ["clinton-optimize"]
+  },
+  {
+    "question": "In Health and Light, what did John Ott report happened to tomato plants after sunlight and foliar feeding? Explain the idea simply and give me a learning tip.",
+    "expected_status": "answered",
+    "expected_source_ids": ["ott-health-and-light"]
+  }
+]

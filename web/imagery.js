@@ -1,0 +1,17 @@
+export const imagery = {
+  sunrise: {src: '/assets/images/sunrise.png', w: 1152, h: 2048,
+    alt: 'A golden sun rising over the sea beneath an orange sky, reflected on the water.',
+    position: '50% 50%', credit: 'User-supplied visual reference; original photographer unconfirmed.'},
+  eye: {src: '/assets/images/eye.jpg', w: 736, h: 981,
+    alt: 'A blue iris surrounded by crystalline ice and water droplets.',
+    position: '50% 50%', credit: 'User-supplied visual reference; original artist unconfirmed.'},
+  world: {src: '/assets/images/world.jpg', w: 1024, h: 1536,
+    alt: 'A translucent human profile containing trees, mountains and waterfalls beneath a rainbow.',
+    position: '50% 48%', credit: 'User-supplied visual reference; original artist unconfirmed.'},
+  helix: {src: '/assets/images/helix.jpg', w: 736, h: 977,
+    alt: 'A transparent glass-like double helix against a pale blue background.',
+    position: '50% 50%', credit: 'User-supplied visual reference; original artist unconfirmed.'},
+  water: {src: '/assets/images/water.jpg', w: 736, h: 981,
+    alt: 'A glass-like face dissolving into small water droplets.',
+    position: '64% 48%', credit: 'User-supplied visual reference; original artist unconfirmed.'},
+};

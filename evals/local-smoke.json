@@ -1,0 +1,11 @@
+[
+  {
+    "question": "How does Jack Kruse describe DHA in Epi-paleo Rx?",
+    "expected_status": "answered",
+    "expected_source_ids": ["kruse-epi-paleo-rx"]
+  },
+  {
+    "question": "How do I configure Kubernetes ingress for a multiplayer Minecraft server?",
+    "expected_status": "insufficient_context"
+  }
+]

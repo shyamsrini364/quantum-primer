@@ -1,0 +1,7 @@
+[
+  {
+    "question": "Compare “Optimize” and “The Mitochondriac Manifesto”: how does each author describe exclusion zone (EZ) water? Identify one similarity and one difference supported by the passages, and cite each book. If no clear difference is supported, say so.",
+    "expected_status": "answered",
+    "expected_source_ids": ["clinton-optimize", "lee-mitochondriac-manifesto"]
+  }
+]

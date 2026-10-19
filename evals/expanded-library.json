@@ -1,0 +1,9 @@
+[
+  {"question": "In Health and Light, what did John Ott report happened to tomato plants after sunlight and foliar feeding?", "expected_status": "answered", "expected_source_ids": ["ott-health-and-light"]},
+  {"question": "In Life on the Edge, how do the authors describe Wolfgang Wiltschko's work on the magnetic compass of robins?", "expected_status": "answered", "expected_source_ids": ["mcfadden-al-khalili-life-on-the-edge"]},
+  {"question": "In Optimize, how does Catherine Clinton describe exclusion zone water?", "expected_status": "answered", "expected_source_ids": ["clinton-optimize"]},
+  {"question": "In The Mitochondriac Manifesto, how does R. D. Lee distinguish redoxing from detoxing?", "expected_status": "answered", "expected_source_ids": ["lee-mitochondriac-manifesto"]},
+  {"question": "In Your Spark is Light, how does Courtney Hunt describe the zinc spark at fertilization?", "expected_status": "answered", "expected_source_ids": ["hunt-your-spark-is-light"]},
+  {"question": "How does Jack Kruse describe DHA in Epi-paleo Rx?", "expected_status": "answered", "expected_source_ids": ["kruse-epi-paleo-rx"]},
+  {"question": "How do I configure Kubernetes ingress for a multiplayer Minecraft server?", "expected_status": "insufficient_context"}
+]

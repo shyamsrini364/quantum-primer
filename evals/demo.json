@@ -1,0 +1,21 @@
+[
+  {
+    "question": "What is Quantum Primer?",
+    "expected_status": "answered",
+    "expected_source_ids": [
+      "demo-guide"
+    ]
+  },
+  {
+    "question": "How do citations work?",
+    "expected_status": "answered",
+    "expected_source_ids": [
+      "demo-guide"
+    ]
+  },
+  {
+    "question": "What is quantum coherence?",
+    "expected_status": "insufficient_context",
+    "expected_source_ids": []
+  }
+]
