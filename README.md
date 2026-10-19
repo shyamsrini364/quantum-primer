@@ -21,6 +21,33 @@ Visual details: portrait-led scroll opening, continuous background, dark/light t
 
 Introduction references: *Life on the Edge*, chapters 3, 4 and 6; *Health and Light*, preface; *Optimize*, introduction and chapter 2; *The Mitochondriac Manifesto*, PDF pages 122–124; *Your Spark is Light*, PDF pages 35–38; *Epi-paleo Rx*, PDF page 135. Copy distinguishes the authors' accounts from established conclusions and links to the reading room. The artwork is illustrative, not scientific imagery.
 
+## Vercel deployment
+
+The private source repository is https://github.com/shyamsrini364/quantum-primer.
+The Vercel project is `quantum-primer` under `shyamsrini26-7342s-projects`.
+`app.py` exposes the same FastAPI service used locally. Vercel deployment and
+production domains are accepted through Vercel's server-provided environment variables.
+
+The live assistant requires the private `data/index.json` manifest as well as the
+existing Pinecone namespace. The manifest is excluded from GitHub and included only
+in the Python server bundle; there is no public file route for it. Raw books and
+local `.env` files are excluded from deployment. Model and Pinecone credentials
+are configured as sensitive Vercel environment variables, never frontend settings.
+
+Automatic Git deployments are disabled because a Git checkout does not contain the
+private library. After approval to host the indexed passages on Vercel, publish
+updates from this workspace with:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/prepare_vercel.py
+vercel.cmd deploy --prod --yes --cwd reports/vercel-stage
+```
+
+For a fresh checkout, restore the private manifest locally, run the preparation
+script, then link with `vercel.cmd link --yes --project quantum-primer --cwd reports/vercel-stage`.
+The deployment directory is ignored by Git. Never commit it or the library manifest.
+Changing the indexed library requires preparing and deploying a new server bundle.
+
 ## Original Streamlit interface (optional)
 
 Run these exact commands in PowerShell:
