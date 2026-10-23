@@ -9,7 +9,33 @@ Quantum Primer introduces curious beginners to quantum biology through answers g
 TODO: list actual book titles, authors, editions, formats, page counts and source IDs. No books were supplied during the initial implementation. The included demo guide is an original software fixture only.
 
 ## Architecture and prompts
-Use the framework in `project-scope.md` and diagram in the README. Generation and source-coverage prompts are in `src/quantum_primer/graph.py`. Coding prompt and implementation decisions are in `iteration-log.md`.
+See [Architecture — Week 2 project review](architecture.md) for the full retrieval and verification flow, ingestion/storage diagram and code map. The core flow is included below.
+
+```mermaid
+flowchart TD
+    Q["User question"] --> S["Resolve named books and search text"]
+    S --> D["Embed query: Pinecone dense search"]
+    S --> B["Local BM25 keyword search"]
+    D --> F["Reciprocal rank fusion"]
+    B --> F
+    F --> C["Select passages with source metadata"]
+    C --> G{"Required sources present and model coverage check passes?"}
+    G -->|No| N["Refuse: insufficient_context"]
+    G -->|Yes| A["Generate structured cited statements"]
+    A --> M{"Multiple named sources?"}
+    M -->|Yes| V["Model reviews comparison against all passages"]
+    V --> P{"Review passes?"}
+    P -->|No| R["Revise once and review again"]
+    R --> T{"Second review passes?"}
+    T -->|No| N
+    T -->|Yes| I
+    P -->|Yes| I
+    M -->|No| I{"Citation IDs valid and required sources cited?"}
+    I -->|No| N
+    I -->|Yes| O["Deduplicate citations by book and location; return answer"]
+```
+
+Use the framework in `project-scope.md`. Generation and source-coverage prompts are in `src/quantum_primer/graph.py`. Coding prompt and implementation decisions are in `iteration-log.md`.
 
 ## Iterations and findings
 The initial build implements hybrid retrieval, source validation and refusal behavior. Add real examples of retrieval failure, chunking changes, prompt changes and their measured effects after running the book corpus. Do not describe offline tests as evidence of real-world answer faithfulness.
