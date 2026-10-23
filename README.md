@@ -160,15 +160,29 @@ The guide aims to teach rather than recite: lead with a plain-language idea, exp
 
 ```mermaid
 flowchart TD
-    Q[Question] --> R[Pinecone dense plus local BM25]
-    R --> F[Reciprocal rank fusion]
-    F --> G{Source coverage check}
-    G -->|Enough context| A[Generate cited statements]
-    G -->|Insufficient| N[Could not find an answer]
-    A --> V{Citation IDs valid}
-    V -->|Yes| O[Answer and source locations]
-    V -->|No| N
+    Q["User question"] --> S["Resolve named books and search text"]
+    S --> D["Embed query: Pinecone dense search"]
+    S --> B["Local BM25 keyword search"]
+    D --> F["Reciprocal rank fusion"]
+    B --> F
+    F --> C["Select passages with source metadata"]
+    C --> G{"Required sources present and model coverage check passes?"}
+    G -->|No| N["Refuse: insufficient_context"]
+    G -->|Yes| A["Generate structured cited statements"]
+    A --> M{"Multiple named sources?"}
+    M -->|Yes| V["Model reviews comparison against all passages"]
+    V --> P{"Review passes?"}
+    P -->|No| R["Revise once and review again"]
+    R --> T{"Second review passes?"}
+    T -->|No| N
+    T -->|Yes| I
+    P -->|Yes| I
+    M -->|No| I{"Citation IDs valid and required sources cited?"}
+    I -->|No| N
+    I -->|Yes| O["Deduplicate citations by book and location; return answer"]
 ```
+
+See [Architecture — Week 2 project review](docs/architecture.md) for ingestion, storage, ranking settings, verification limits and links to the implementation.
 
 Dense top-8 and lexical top-8 are fused and reduced to 4 contexts. Lexical queries deduplicate terms and omit common function words and presentation words such as "explain", "example" and "plain language", so teaching instructions do not crowd out subject matches. Dense search and answer generation retain the question wording after the existing retrieval-only book/author scoping. The dense threshold (default 0.35) is tunable and is not a probability; BM25 can still contribute exact matches below it. No neural reranker is included. A model judges whether the retrieved material covers the question. Empty retrieval, failed coverage, malformed JSON or unknown citation IDs cause a refusal. Provider outages produce an HTTP 503, not a fabricated answer.
 
